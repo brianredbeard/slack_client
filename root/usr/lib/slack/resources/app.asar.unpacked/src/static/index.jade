@@ -1,0 +1,16 @@
+doctype html
+html(style='width: 100%; height: 100%;')
+  head
+    title
+    link(rel='stylesheet', type='text/css', href='lato.less')
+    link(rel='stylesheet', type='text/css', href='slack-icons-font.less')
+    link(rel='import', href='../renderer/components/styles/styles.html')
+    link(rel='import', href='../renderer/notifications/html-notifications/styles/styles.html')
+    if(isProduction)
+      script(src='bugsnag-3.js', data-apikey='acaff8df67924f677747922423057034')
+  body(tabindex='-1', style='width: 100%; height: 100%; margin: 0; overflow: hidden')
+    if (!isProduction)
+      script.
+        const core = require('react-devtools-core');
+        let count = 2;
+        core.connectToDevTools({ isAppActive: () => count-- > 0 });
