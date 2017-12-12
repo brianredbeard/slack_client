@@ -43,6 +43,22 @@ a849dcbb57cd38fb89633641320d9cad0dc65e5b3e67af9d514bc1b5b95e5c1b  slack-3.0.0-0.
 a05aa056e4c5d3ced30452a9ff016d86803c8bc1bed11c95c36c4e3b0340cc366902a5819df83e4bd81d962992a33e6679fe90b73fc1a4e6421446e00d904240  slack-3.0.0-0.1.fc21.x86_64.rpm
 ```
 
+### Security
+
+When generating a package (or installing) one may optionally choose to remove
+the file `/etc/cron.daily/slack`.  This file is a cron job which automatically
+adds GPG keys to the system key ring.  This is not for a single key, but
+potentially many keys as per:
+
+```
+# NB: The original key we used above is the public PackageCloud
+# key which we are now moving away from and moving to a key that
+# Slack uses solely for Slack packages. However, in order to not
+# break updates for people, we need to ship an update where we
+# include both keys. In a future update, we'll remove the
+# PackageCloud key.
+```
+
 ## License
 As per the RPM file (noted above) this package is released under the MIT
 license.  Full details of the MIT license are noted in the file `LICENSE`.
